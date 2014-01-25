@@ -3,6 +3,32 @@ PreHack-How2API
 
 Code for short workshop demonstrating basic API usage
 
+#General tips
+
+* Read the API documentation! In order to find out what you can do, you can study a detailed list of the available commands. For example [posting to Facebook](https://developers.facebook.com/docs/reference/api/publishing/).
+* A common serialisation format for responses is JSON, it resembles a `dictionary` but stored as a `string` and it is easy to convert between JSON and dictionaries in Python with the `json` module.
+
+```python
+import json
+
+some_json = '''{
+  'name' : 'Dave',
+  'occupation' : 'derp'
+}'''
+
+json_as_dict = json.loads(some_json)
+#=> { u'name' : u'Dave', u'occupation' : u'derp' }
+
+a_dict = {
+  'name' : 'James',
+  'occupation' : 'aardvark'
+}
+
+dict_as_json = json.dumps(a_dict)
+#=> "{ 'name' : 'James', 'occupation' : 'aardvark' }"
+
+```
+
 #OAuth2
 
 ## Running the demos
