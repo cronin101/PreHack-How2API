@@ -12,11 +12,14 @@ Clone this repository to the local machine with `$ git clone https://github.com/
 
 ### Step 1: Requirements
 
-First, install the required packages for the python OAuth server with `$ pip install -r requirements.txt`.
+First, we are going to set up a virtual python environment using **virtualenv**. [See how/why to use here](http://www.virtualenv.org/en/latest/virtualenv.html#usage).
 
-If this step fails due to permissions issues, and even if it doesn't, you should probably create a virtual environment using `VIRTUALENV`.
+`$ virtualenv ENV`
+`$ source ENV/bin/activate`
 
-[See how/why to use here](http://www.virtualenv.org/en/latest/virtualenv.html#usage).
+
+Next, install the required packages for the python OAuth server with `$ pip install -r requirements.txt`.
+
 
 ### Step 2: Getting OAuth tokens
 
