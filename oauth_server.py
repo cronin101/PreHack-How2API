@@ -10,17 +10,29 @@ app = Flask(__name__)
 @app.route('/')
 def root_page():
     return '''
-        <ul>
-            <li>
-                <a href='/github'>GitHub OAuth Token Flow</a>
-            </li>
-            <li>
-                <a href='/facebook'>Facebook OAuth Token Flow</a>
-            </li>
-            <li>
-                <a href='/reddit'>Reddit OAuth Token Flow</a>
-            </li>
-       </ul>
+        <html>
+        <head>
+            <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+        <body>
+                <h1> OAuth token request app </h1>
+                <b>
+                    Following one of these links will create a .token file in the directory that the server is running in.
+                </b>
+                <hr>
+                <ul>
+                    <li>
+                        <a href='/github'>GitHub OAuth Token Flow</a>
+                    </li>
+                    <li>
+                        <a href='/facebook'>Facebook OAuth Token Flow</a>
+                    </li>
+                    <li>
+                        <a href='/reddit'>Reddit OAuth Token Flow</a>
+                    </li>
+               </ul>
+        </body>
+        </html>
     '''
 
 
