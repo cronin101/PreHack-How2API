@@ -6,7 +6,7 @@ import json
 LOCALHOST_ENDPOINT = 'http://127.0.0.1:8080/oauth'
 
 app = Flask(__name__)
-HOME_LINK = '<a href="https://127.0.0.1:8080">Go Home</a>'
+HOME_LINK = '<a href="http://127.0.0.1:8080">Go Home</a>'
 
 @app.route('/')
 def root_page():
