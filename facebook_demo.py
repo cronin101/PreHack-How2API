@@ -1,4 +1,5 @@
 import json
+import webbrowser
 from rauth import OAuth2Session
 
 API_BASE = 'https://graph.facebook.com'
@@ -23,3 +24,5 @@ if __name__ == '__main__':
                 'place' : '282348111785010'
             }
     )
+
+    webbrowser.open(user_details['link'])
