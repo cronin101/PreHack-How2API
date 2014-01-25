@@ -28,7 +28,7 @@ Next, install the required packages for the python OAuth server with `$ pip inst
 
 ### Step 2: Getting OAuth tokens
 
-Run `./oauth_server.py` with `$ python ./oauth_server.py`. 
+Run *./oauth_server.py* with `$ python ./oauth_server.py`. 
 
 This starts the [Flask](http://flask.pocoo.org/) server, used to interact with OAuth providers, on port 8080.
 
