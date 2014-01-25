@@ -14,7 +14,12 @@ Clone this repository to the local machine with `$ git clone https://github.com/
 
 First, we are going to set up a virtual python environment using **virtualenv**. [See how/why to use here](http://www.virtualenv.org/en/latest/virtualenv.html#usage).
 
+
+Run the following commands:
+
 `$ virtualenv ENV`
+
+
 `$ source ENV/bin/activate`
 
 
