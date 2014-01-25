@@ -17,7 +17,10 @@ def root_page():
             <li>
                 <a href='/facebook'>Facebook OAuth Token Flow</a>
             </li>
-        </ul>
+            <li>
+                <a href='/reddit'>Reddit OAuth Token Flow</a>
+            </li>
+       </ul>
     '''
 
 
@@ -34,10 +37,8 @@ github_creds = {
 github = OAuth2Service(
     client_id=github_creds['client_id'],
     client_secret=github_creds['client_secret'],
-    name='github',
     authorize_url=(GITHUB_BASE_URL + '/authorize'),
     access_token_url=(GITHUB_BASE_URL + '/access_token'),
-    base_url=GITHUB_BASE_URL
 )
 
 @app.route('/github')
@@ -72,10 +73,8 @@ facebook_creds = {
 facebook = OAuth2Service(
     client_id=facebook_creds['client_id'],
     client_secret=facebook_creds['client_secret'],
-    name='facebook',
     authorize_url=(FACEBOOK_BASE_URL + '/dialog/oauth'),
     access_token_url='https://graph.facebook.com/oauth/access_token',
-    base_url=FACEBOOK_BASE_URL
 )
 
 @app.route('/facebook')
@@ -97,6 +96,53 @@ def receive_facebook_code():
         f.write(json.dumps(facebook_creds))
     return "Facebook OAuth token flow complete"
 
+
+'''
+    OAuth flow code for Reddit
+    API Docs: https://github.com/reddit/reddit/wiki/OAuth2
+'''
+REDDIT_BASE_URL = 'https://ssl.reddit.com/api/v1'
+reddit_creds = {
+    'client_id' : 'RQmPBWVnLdMpAw',
+    'client_secret' : 'GfF_lklead8-yVRHWiUN3MhYK1k'
+}
+reddit = OAuth2Service(
+    client_id=reddit_creds['client_id'],
+    client_secret=reddit_creds['client_secret'],
+    authorize_url=(REDDIT_BASE_URL + '/authorize'),
+    access_token_url=(REDDIT_BASE_URL + '/access_token')
+)
+
+@app.route('/reddit')
+def reddit_redirect():
+    params = {
+        'scope' : 'identity',
+        'state' : 'derp',
+        'response_type': 'code',
+        'redirect_uri': LOCALHOST_ENDPOINT + '/reddit',
+    }
+    return redirect(
+        reddit.get_authorize_url(**params),
+        code=302
+    )
+
+@app.route('/oauth/reddit')
+def receive_reddit_code():
+    data = {
+        'code' : request.args.get('code'),
+        'redirect_uri' : LOCALHOST_ENDPOINT + '/reddit',
+        'grant_type' : 'authorization_code'
+    }
+
+    token = json.loads(reddit.get_raw_access_token(
+        data=data,
+        auth=(reddit_creds['client_id'], reddit_creds['client_secret'])
+    ).text)
+
+    reddit_creds['access_token'] = token['access_token']
+    with open('reddit_oauth', 'w') as f:
+        f.write(json.dumps(reddit_creds))
+    return 'Reddit OAuth token flow complete'
 
 
 
