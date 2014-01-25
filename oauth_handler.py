@@ -3,7 +3,7 @@ from rauth import OAuth2Service
 import urlparse
 import json
 
-LOCALHOST_ENDPOINT = 'http://127.0.0.1/oauth'
+LOCALHOST_ENDPOINT = 'http://127.0.0.1:8080/oauth'
 
 app = Flask(__name__)
 
@@ -150,4 +150,4 @@ def receive_reddit_code():
 
 if __name__ == '__main__':
     app.debug = True
-    app.run(port=80)
+    app.run(port=8080)
