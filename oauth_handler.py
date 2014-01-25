@@ -56,7 +56,7 @@ def receive_github_code():
     }).text)
 
     github_creds['access_token'] = token['access_token'][0]
-    with open('github_oauth', 'w') as f:
+    with open('github_oauth.token', 'w') as f:
         f.write(json.dumps(github_creds))
     return "GitHub OAuth token flow complete"
 
@@ -92,7 +92,7 @@ def receive_facebook_code():
     }).text)
 
     facebook_creds['access_token'] = token['access_token'][0]
-    with open('facebook_oauth', 'w') as f:
+    with open('facebook_oauth.token', 'w') as f:
         f.write(json.dumps(facebook_creds))
     return "Facebook OAuth token flow complete"
 
@@ -140,7 +140,7 @@ def receive_reddit_code():
     ).text)
 
     reddit_creds['access_token'] = token['access_token']
-    with open('reddit_oauth', 'w') as f:
+    with open('reddit_oauth.token', 'w') as f:
         f.write(json.dumps(reddit_creds))
     return 'Reddit OAuth token flow complete'
 
