@@ -6,6 +6,7 @@ import json
 LOCALHOST_ENDPOINT = 'http://127.0.0.1:8080/oauth'
 
 app = Flask(__name__)
+HOME_LINK = '<a href="https://127.0.0.1:8080">Go Home</a>'
 
 @app.route('/')
 def root_page():
@@ -70,7 +71,7 @@ def receive_github_code():
     github_creds['access_token'] = token['access_token'][0]
     with open('github_oauth.token', 'w') as f:
         f.write(json.dumps(github_creds))
-    return "GitHub OAuth token flow complete"
+    return "GitHub OAuth token flow complete " + HOME_LINK
 
 
 '''
@@ -109,7 +110,7 @@ def receive_facebook_code():
     facebook_creds['access_token'] = token['access_token'][0]
     with open('facebook_oauth.token', 'w') as f:
         f.write(json.dumps(facebook_creds))
-    return "Facebook OAuth token flow complete"
+    return "Facebook OAuth token flow complete " + HOME_LINK
 
 
 '''
@@ -157,7 +158,7 @@ def receive_reddit_code():
     reddit_creds['access_token'] = token['access_token']
     with open('reddit_oauth.token', 'w') as f:
         f.write(json.dumps(reddit_creds))
-    return 'Reddit OAuth token flow complete'
+    return 'Reddit OAuth token flow complete ' + HOME_LINK
 
 
 
