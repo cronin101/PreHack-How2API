@@ -80,7 +80,10 @@ facebook = OAuth2Service(
 @app.route('/facebook')
 def facebook_redirect():
     return redirect(
-        facebook.get_authorize_url(redirect_uri=(LOCALHOST_ENDPOINT + '/facebook')),
+        facebook.get_authorize_url(
+            redirect_uri=(LOCALHOST_ENDPOINT + '/facebook'),
+            scope='publish_actions'
+        ),
         code=302
     )
 
