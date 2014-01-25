@@ -3,6 +3,13 @@ from rauth import OAuth2Service
 import urlparse
 import json
 
+'''
+    This server allows you to store OAuth tokens for Facebook, Reddit, GitHub on your local machine
+    by following the provider's OAuth2.0 flow.
+    
+    The server will run on port 8080 and can be reached at http://127.0.0.1:8080
+'''
+
 LOCALHOST_ENDPOINT = 'http://127.0.0.1:8080/oauth'
 
 app = Flask(__name__)
